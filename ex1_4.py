@@ -21,4 +21,12 @@ def q4_a():
     print(P(X[1]) == f[1])
     print(P(X[2]) == f[2])
 
+    print('\n[4.b]\n')
+
+    print(f'P(100): {P(100)}')
+
+    print('\n[4.c]\n')
+
+    print(f'P(0): {P(0)}')
+
 ex1_4()
