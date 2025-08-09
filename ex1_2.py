@@ -3,6 +3,7 @@ import numpy.typing as npt
 
 def ex1_2():
     a()
+    b()
 
 def a():
     print('[2.a]\n')
@@ -16,8 +17,12 @@ def a():
     print(f'x_np: {x_np}')
     print(f'norm: {np.linalg.norm(x - x_np)}')
 
+def b():
+    print('[2.b]\n')
 
+    A = np.array([[10.2, 0, -1.1], [0.1, 12.0, 0], [0.1, 0.2, -9.3]])
 
+    print(convergence(A))
 
 def gauss_seidel(A: npt.NDArray, b: npt.NDArray, initial: npt.NDArray, iterations):
     m, n = A.shape
@@ -38,5 +43,17 @@ def gauss_seidel(A: npt.NDArray, b: npt.NDArray, initial: npt.NDArray, iteration
         print(f'x_{k}: {x}')
 
     return x
+
+def convergence(A: npt.NDArray):
+    m, n = A.shape
+
+    for i in range(0, m):
+        before = A[i, 0:i]
+        after = A[i, (i + 1):n]
+
+        if (np.linalg.norm(np.concatenate((before, after))) > abs(A[i, i])):
+            return False
+
+    return True
 
 ex1_2()
